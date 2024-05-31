@@ -1,0 +1,82 @@
+[
+  {
+    "name": "Chicken Curry",
+    "calories": 110,
+    "protein": 15,
+    "carbohydrates": 5,
+    "fat": 4,
+    "fiber": 2
+  },
+  {
+    "name": "Paneer Tikka",
+    "calories": 200,
+    "protein": 10,
+    "carbohydrates": 8,
+    "fat": 12,
+    "fiber": 3
+  },
+  {
+    "name": "Dal Tadka",
+    "calories": 90,
+    "protien": 8,
+    "carbohydrates": 12,
+    "fat": 3,
+    "fiber": 4
+  },
+  {
+    "name": "Aloo Gobi",
+    "calories": 80,
+    "protein": 2,
+    "carbohydrates": 15,
+    "fat": 1,
+    "fiber": 5
+  },
+  {
+    "name": "Chana Masala",
+    "calories": 120,
+    "protein": 6,
+    "carbohydrates": 18,
+    "fat": 5,
+    "fiber": 6
+  },
+  {
+    "name": "Vegetable Biryani",
+    "calories": 160,
+    "protein": 5,
+    "carbohydrates": 20,
+    "fat": 7,
+    "fiber": 3
+  },
+  {
+    "name": "Fish Curry",
+    "carlories": 130,
+    "protein": 20,
+    "carbohydrates": 8,
+    "fat": 6,
+    "fiber": 1
+  },
+  {
+    "name": "Palak Paneer",
+    "calories": 150,
+    "protein": 12,
+    "carbohydrates": 10,
+    "fat": 8,
+    "fiber": 4
+  },
+  {
+    "name": "Matar Pulao",
+    "calories": 130,
+    "protein": 4,
+    "carbohydrates": 25,
+    "fat": 3,
+    "fiber": 2
+  },
+  {
+    "name": "Butter Chicken",
+    "calories": 180,
+    "protein": 18,
+    "carbohydrates": 12,
+    "fat": 10,
+    "fiber": 1
+  }
+]
