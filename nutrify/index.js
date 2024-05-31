@@ -5,6 +5,7 @@ const jwt = require("jsonwebtoken");
 
 // importing models
 const userModel = require("./models/userModel");
+const foodModel = require("./models/foodModel");
 // database connection
 mongoose
   .connect("mongodb://localhost:27017/nutrify")
@@ -67,6 +68,18 @@ app.post("/login", async (req, res) => {
   } catch (err) {
     console.log(err);
     res.status(500).send({ message: "Some Problem" });
+  }
+});
+
+// endpoint to see all foods
+
+app.get("/foods", async (req, res) => {
+  try {
+    let foods = await foodModel.find();
+    res.send(foods);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: "Some Problem while getting info" });
   }
 });
 
