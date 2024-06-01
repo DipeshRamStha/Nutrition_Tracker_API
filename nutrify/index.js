@@ -73,7 +73,7 @@ app.post("/login", async (req, res) => {
 
 // endpoint to see all foods
 
-app.get("/foods", async (req, res) => {
+app.get("/foods", verifyToken, async (req, res) => {
   try {
     let foods = await foodModel.find();
     res.send(foods);
@@ -82,6 +82,21 @@ app.get("/foods", async (req, res) => {
     res.status(500).send({ message: "Some Problem while getting info" });
   }
 });
+
+function verifyToken(req, res, next) {
+  if (req.headers.authorization !== undefined) {
+    let token = req.headers.authorization.split(" ")[1];
+
+    jwt.verify(token, "nutrifyapp", (err, data) => {
+      if (!err) {
+        next();
+      }
+    });
+    res.send("coming from middleware");
+  } else {
+    res.send({ message: "Please send a token" });
+  }
+}
 
 app.listen(8000, () => {
   console.log("Server is up and running");
