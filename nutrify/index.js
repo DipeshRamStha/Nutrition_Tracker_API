@@ -85,6 +85,24 @@ app.get("/foods", verifyToken, async (req, res) => {
   }
 });
 
+// endpoint to search food by name
+
+app.get("/foods/:name", verifyToken, async (req, res) => {
+  try {
+    let foods = await foodModel.find({
+      name: { $regex: req.params.name, $options: "i" },
+    });
+    if (foods.length !== 0) {
+      res.send(foods);
+    } else {
+      res.status(404).send({ message: "Food Item Not Found" });
+    }
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: "Some Problem in getting the food" });
+  }
+});
+
 app.listen(8000, () => {
   console.log("Server is up and running");
 });
