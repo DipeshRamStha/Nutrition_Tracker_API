@@ -6,6 +6,8 @@ const jwt = require("jsonwebtoken");
 // importing models
 const userModel = require("./models/userModel");
 const foodModel = require("./models/foodModel");
+const verifyToken = require("./verifyToken");
+
 // database connection
 mongoose
   .connect("mongodb://localhost:27017/nutrify")
@@ -82,21 +84,6 @@ app.get("/foods", verifyToken, async (req, res) => {
     res.status(500).send({ message: "Some Problem while getting info" });
   }
 });
-
-function verifyToken(req, res, next) {
-  if (req.headers.authorization !== undefined) {
-    let token = req.headers.authorization.split(" ")[1];
-
-    jwt.verify(token, "nutrifyapp", (err, data) => {
-      if (!err) {
-        next();
-      }
-    });
-    res.send("coming from middleware");
-  } else {
-    res.send({ message: "Please send a token" });
-  }
-}
 
 app.listen(8000, () => {
   console.log("Server is up and running");
