@@ -119,6 +119,30 @@ app.post("/track", verifyToken, async (req, res) => {
   }
 });
 
+// endpoint to fetch all foods eaten by a person
+app.get("/track/:userid/:date", verifyToken, async (req, res) => {
+  let userid = req.params.userid;
+  let date = new Date(req.params.date);
+  let strDate =
+    date.getDate() + "/" + (date.getMonth() + 1) + "/" + date.getFullYear();
+
+  console.log(strDate, date);
+
+  // console.log(strDate);
+  // console.log(date);
+  // console.log(new Date(date));
+  try {
+    let foods = await trackingModel
+      .find({ userId: userid, eatenDate: strDate })
+      .populate("userId")
+      .populate("foodId");
+    res.send(foods);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send({ message: "SOme Problem in getting the food" });
+  }
+});
+
 app.listen(8000, () => {
   console.log("Server is up and running");
 });
